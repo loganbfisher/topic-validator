@@ -1,0 +1,57 @@
+{
+  "name": "topic-validator",
+  "author": "Logan Fisher (logan@themediaside.com)",
+  "license": "ISC",
+  "version": "1.0.0",
+  "description":
+    "Used to filter topic messages in the past to build a state object to use when validating incoming messages.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./src/index.js",
+    "test": "jest"
+  },
+  "jest": {
+    "verbose": true,
+    "collectCoverage": true,
+    "testEnvironment": "node",
+    "coverageThreshold": {
+      "global": {
+        "branches": 85,
+        "functions": 85,
+        "lines": 85,
+        "statements": 85
+      }
+    },
+    "testMatch": ["**/__tests__/**/*.test.js"],
+    "modulePathIgnorePatterns": ["dist/*"],
+    "coveragePathIgnorePatterns": ["/node_modules/", "/dist/"]
+  },
+  "keywords": [
+    "topics",
+    "kafka",
+    "replay",
+    "CQRS",
+    "queue",
+    "validation",
+    "topic-validation"
+  ],
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-eslint": "^8.0.3",
+    "babel-jest": "^21.2.0",
+    "babel-plugin-transform-es2015-arrow-functions": "^6.22.0",
+    "babel-plugin-transform-es2015-destructuring": "^6.23.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.0",
+    "babel-plugin-transform-es2015-parameters": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-plugin-transform-strict-mode": "^6.24.1",
+    "documentation": "^5.3.5",
+    "eslint": "^4.13.1",
+    "eslint-plugin-babel": "^4.1.2",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jest": "^21.4.2",
+    "jest": "^21.2.1",
+    "nodemon": "^1.12.5",
+    "prettier-eslint-cli": "^4.4.2"
+  }
+}
