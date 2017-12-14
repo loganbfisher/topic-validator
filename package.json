@@ -36,6 +36,13 @@
       "path": "cz-conventional-changelog"
     }
   },
+  "release": {
+    "verifyConditions": "condition-codefresh",
+    "debug": false
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "keywords": [
     "topics",
     "kafka",
@@ -56,6 +63,7 @@
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-plugin-transform-strict-mode": "^6.24.1",
     "commitizen": "^2.9.6",
+    "condition-codefresh": "^1.0.1",
     "cz-conventional-changelog": "^2.1.0",
     "documentation": "^5.3.5",
     "eslint": "^4.13.1",
