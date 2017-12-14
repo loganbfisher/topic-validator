@@ -5,9 +5,10 @@
   "version": "0.0.0-development",
   "description":
     "Used to filter topic messages in the past to build a state object to use when validating incoming messages.",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "start": "babel-node ./src/index.js",
+    "start": "node index.js",
+    "start-dev": "babel-node ./src/index.js",
     "commit": "git cz",
     "build":
       "babel --copy-files --out-dir dist --ignore *.test.js,__mocks__ src",
