@@ -239,7 +239,7 @@ const isRemovable = (record, topicMessages, primaryKeyIdentifier) => {
   return bool;
 };
 
-const stateBuilder = {
+const topicValidator = {
   buildTopicState,
   create,
   update,
@@ -249,4 +249,4 @@ const stateBuilder = {
   isRemovable
 };
 
-export default stateBuilder;
+export default topicValidator;

@@ -2,13 +2,18 @@
   "name": "topic-validator",
   "author": "Logan Fisher (logan@themediaside.com)",
   "license": "ISC",
-  "version": "1.0.0",
+  "version": "0.0.0-development",
   "description":
     "Used to filter topic messages in the past to build a state object to use when validating incoming messages.",
   "main": "index.js",
   "scripts": {
-    "start": "node ./src/index.js",
-    "test": "jest"
+    "start": "babel-node ./src/index.js",
+    "commit": "git cz",
+    "build":
+      "babel --copy-files --out-dir dist --ignore *.test.js,__mocks__ src",
+    "test": "jest",
+    "semantic-release":
+      "semantic-release pre && npm publish && semantic-release post"
   },
   "jest": {
     "verbose": true,
@@ -25,6 +30,11 @@
     "testMatch": ["**/__tests__/**/*.test.js"],
     "modulePathIgnorePatterns": ["dist/*"],
     "coveragePathIgnorePatterns": ["/node_modules/", "/dist/"]
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
   },
   "keywords": [
     "topics",
@@ -45,6 +55,8 @@
     "babel-plugin-transform-es2015-parameters": "^6.24.1",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-plugin-transform-strict-mode": "^6.24.1",
+    "commitizen": "^2.9.6",
+    "cz-conventional-changelog": "^2.1.0",
     "documentation": "^5.3.5",
     "eslint": "^4.13.1",
     "eslint-plugin-babel": "^4.1.2",
@@ -52,6 +64,11 @@
     "eslint-plugin-jest": "^21.4.2",
     "jest": "^21.2.1",
     "nodemon": "^1.12.5",
-    "prettier-eslint-cli": "^4.4.2"
+    "prettier-eslint-cli": "^4.4.2",
+    "semantic-release": "^8.2.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/loganbfisher/topic-validator.git"
   }
 }
