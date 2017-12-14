@@ -1,0 +1,33 @@
+version: '1.0'
+steps:
+  BuildDockerImage:
+    title: Building Docker Image
+    type: build
+    image_name: topic-validator
+    dockerfile: Dockerfile
+  RunUnitTests:
+    title: Running Unit Tests
+    image: ${{BuildDockerImage}}
+    working_directory: /home/app
+    commands:
+      - npm test
+    on_success:
+      metadata:
+        set:
+          - '${{BuildDockerImage.imageId}}':
+              - CF_QUALITY: true
+    on_fail:
+      metadata:
+        set:
+          - '${{BuildDockerImage.imageId}}':
+              - CF_QUALITY: false
+  PublishModule:
+    title: Publishing my module
+    image: ${{BuildDockerImage}}
+    working_directory: /home/app
+    when:
+      branch:
+        only: [ master ]
+    commands:
+      - npm run build
+      - npm run semantic-release
