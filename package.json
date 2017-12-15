@@ -81,7 +81,6 @@
     "url": "https://github.com/loganbfisher/topic-validator.git"
   },
   "dependencies": {
-    "bycontract": "0.0.7",
-    "validate-arguments": "0.0.8"
+    "bycontract": "0.0.7"
   }
 }
