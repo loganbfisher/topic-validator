@@ -15,7 +15,8 @@ Builds the most current state of a topic from looping over messages and replayin
 **Parameters**
 
 * `topicMessages` **[array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)** Array of the current topic messages.
-* `primaryKeyIdentifier` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** The primary key used to identify each message.
+* `primaryKey` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** The primary key used to identify each message.
+* `topicActionKey` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** The key for your command action in the topic message (example: topicAction: 'created').
 
 **Examples**
 
@@ -32,7 +33,7 @@ const topicMessages = [
   }
 ];
 
-buildTopicState(topicMessages, 'deviceId');
+buildTopicState(topicMessages, 'deviceId', 'topicAction');
 ```
 
 Returns **[array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)** Returns a new state array of topic messages from replay.
