@@ -3,15 +3,18 @@
   "author": "Logan Fisher (logan@themediaside.com)",
   "license": "ISC",
   "version": "0.0.0-development",
-  "description": "Used to filter topic messages in the past to build a state object to use when validating incoming messages.",
+  "description":
+    "Used to filter topic messages in the past to build a state object to use when validating incoming messages.",
   "main": "dist/index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "nodemon --exec jest",
     "start-dev": "babel-node ./src/index.js",
     "commit": "git cz",
-    "build": "babel --copy-files --out-dir dist --ignore *.test.js,__mocks__ src",
-    "test": "nodemon --exec jest",
-    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
+    "build":
+      "babel --copy-files --out-dir dist --ignore *.test.js,__mocks__ src",
+    "test": "jest",
+    "semantic-release":
+      "semantic-release pre && npm publish && semantic-release post"
   },
   "jest": {
     "verbose": true,
@@ -25,16 +28,9 @@
         "statements": 85
       }
     },
-    "testMatch": [
-      "**/__tests__/**/*.test.js"
-    ],
-    "modulePathIgnorePatterns": [
-      "dist/*"
-    ],
-    "coveragePathIgnorePatterns": [
-      "/node_modules/",
-      "/dist/"
-    ]
+    "testMatch": ["**/__tests__/**/*.test.js"],
+    "modulePathIgnorePatterns": ["dist/*"],
+    "coveragePathIgnorePatterns": ["/node_modules/", "/dist/"]
   },
   "config": {
     "commitizen": {
