@@ -1,8 +1,11 @@
+import byContract from 'bycontract';
+
 /**
  * Builds the most current state of a topic from looping over messages and replaying state.
  * @function
  * @param {array} topicMessages - Array of the current topic messages.
- * @param {string} primaryKeyIdentifier - The primary key used to identify each message.
+ * @param {string} primaryKey - The primary key used to identify each message.
+ * @param {string} topicActionKey - The key for your command action in the topic message (example: topicAction: 'created').
  * @example
  * const topicMessages = [
  *   {
@@ -18,26 +21,35 @@
  *
  * buildTopicState(
  *   topicMessages,
- *   'deviceId'
+ *   'deviceId',
+     'topicAction'
  * );
  * @returns {array} Returns a new state array of topic messages from replay.
  */
-const buildTopicState = (topicMessages, primaryKeyIdentifier) => {
+const buildTopicState = (topicMessages, primaryKey, topicActionKey) => {
+  try {
+    byContract(
+      [topicMessages, primaryKey, topicActionKey],
+      ['array', 'string', 'string']
+    );
+  } catch (err) {
+    throw new Error(err.message);
+  }
+
   let state = [];
 
   topicMessages.forEach(message => {
-    // @TODO make topic action an action key passed in for more general use.
-    switch (message.topicAction) {
+    switch (message[topicActionKey]) {
       case 'created':
         state = create(state, message);
 
         return state;
       case 'updated':
-        state = update(state, message, primaryKeyIdentifier);
+        state = update(state, message, primaryKey);
 
         return state;
       case 'deleted':
-        state = remove(state, message, primaryKeyIdentifier);
+        state = remove(state, message, primaryKey);
 
         return state;
       default:
@@ -62,6 +74,12 @@ const buildTopicState = (topicMessages, primaryKeyIdentifier) => {
  * @returns {array} Returns the new state with the passed in item.
  */
 const create = (state, record) => {
+  try {
+    byContract([state, record], ['array', 'object']);
+  } catch (err) {
+    throw new Error(err.message);
+  }
+
   state.push(record);
 
   return state;
@@ -90,6 +108,15 @@ const create = (state, record) => {
  * @returns {array} Updates record in the state and returns the new state array.
  */
 const update = (state, record, primaryKeyIdentifier) => {
+  try {
+    byContract(
+      [state, record, primaryKeyIdentifier],
+      ['array', 'object', 'string']
+    );
+  } catch (err) {
+    throw new Error(err.message);
+  }
+
   return state.map((item, index) => {
     if (item && item[primaryKeyIdentifier] === record[primaryKeyIdentifier]) {
       return {
@@ -123,6 +150,15 @@ const update = (state, record, primaryKeyIdentifier) => {
  * @returns {array} Removes the record from state and returns the new state array.
  */
 const remove = (state, record, primaryKeyIdentifier) => {
+  try {
+    byContract(
+      [state, record, primaryKeyIdentifier],
+      ['array', 'object', 'string']
+    );
+  } catch (err) {
+    throw new Error(err.message);
+  }
+
   return state.filter(
     (item, index) => item[primaryKeyIdentifier] !== record[primaryKeyIdentifier]
   );
@@ -152,6 +188,15 @@ const remove = (state, record, primaryKeyIdentifier) => {
  * @returns {boolean} Returns a boolean value.
  */
 const isCreatable = (record, topicMessages, primaryKeyIdentifier) => {
+  try {
+    byContract(
+      [record, topicMessages, primaryKeyIdentifier],
+      ['object', 'array', 'string']
+    );
+  } catch (err) {
+    throw new Error(err.message);
+  }
+
   let bool = null;
 
   topicMessages.forEach(message => {
@@ -189,6 +234,15 @@ const isCreatable = (record, topicMessages, primaryKeyIdentifier) => {
  * @returns {boolean} Returns a boolean value.
  */
 const isUpdatable = (record, topicMessages, primaryKeyIdentifier) => {
+  try {
+    byContract(
+      [record, topicMessages, primaryKeyIdentifier],
+      ['object', 'array', 'string']
+    );
+  } catch (err) {
+    throw new Error(err.message);
+  }
+
   let bool = null;
 
   topicMessages.forEach(message => {
@@ -226,6 +280,15 @@ const isUpdatable = (record, topicMessages, primaryKeyIdentifier) => {
  * @returns {boolean} Returns a boolean value.
  */
 const isRemovable = (record, topicMessages, primaryKeyIdentifier) => {
+  try {
+    byContract(
+      [record, topicMessages, primaryKeyIdentifier],
+      ['object', 'array', 'string']
+    );
+  } catch (err) {
+    throw new Error(err.message);
+  }
+
   let bool = null;
 
   topicMessages.forEach(message => {

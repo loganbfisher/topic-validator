@@ -17,7 +17,8 @@ describe('.buildTopicState', () => {
 
       const response = topicValidator.buildTopicState(
         topicMessages,
-        'deviceId'
+        'deviceId',
+        'topicAction'
       );
 
       expect(response).toEqual(topicMessages);
@@ -40,7 +41,8 @@ describe('.buildTopicState', () => {
 
       const response = topicValidator.buildTopicState(
         topicMessages,
-        'deviceId'
+        'deviceId',
+        'topicAction'
       );
 
       expect(response).toEqual([]);
@@ -72,7 +74,8 @@ describe('.buildTopicState', () => {
 
       const response = topicValidator.buildTopicState(
         topicMessages,
-        'deviceId'
+        'deviceId',
+        'topicAction'
       );
 
       expect(response).toEqual([
@@ -123,10 +126,19 @@ describe('.buildTopicState', () => {
 
       const response = topicValidator.buildTopicState(
         topicMessages,
-        'deviceId'
+        'deviceId',
+        'topicAction'
       );
 
       expect(response).toEqual([]);
+    });
+  });
+
+  describe('when an argument isnt passed in', () => {
+    it('should throw argument error', () => {
+      expect(() => {
+        topicValidator.buildTopicState();
+      }).toThrow();
     });
   });
 });
@@ -136,6 +148,14 @@ describe('.create', () => {
     const response = topicValidator.create([], { test: 'test' });
 
     expect(response).toEqual([{ test: 'test' }]);
+  });
+
+  describe('when an argument isnt passed in', () => {
+    it('should throw argument error', () => {
+      expect(() => {
+        topicValidator.create();
+      }).toThrow();
+    });
   });
 });
 
@@ -156,6 +176,14 @@ describe('.update', () => {
 
     expect(response).toEqual([newRecord]);
   });
+
+  describe('when an argument isnt passed in', () => {
+    it('should throw argument error', () => {
+      expect(() => {
+        topicValidator.update();
+      }).toThrow();
+    });
+  });
 });
 
 describe('.remove', () => {
@@ -174,6 +202,14 @@ describe('.remove', () => {
     const response = topicValidator.remove(existingState, newRecord, 'id');
 
     expect(response).toEqual([]);
+  });
+
+  describe('when an argument isnt passed in', () => {
+    it('should throw argument error', () => {
+      expect(() => {
+        topicValidator.remove();
+      }).toThrow();
+    });
   });
 });
 
@@ -211,6 +247,14 @@ describe('.isCreatable', () => {
       const response = topicValidator.isCreatable(record, topicMessages, 'id');
 
       expect(response).toEqual(false);
+    });
+  });
+
+  describe('when an argument isnt passed in', () => {
+    it('should throw argument error', () => {
+      expect(() => {
+        topicValidator.isCreatable();
+      }).toThrow();
     });
   });
 });
@@ -251,6 +295,14 @@ describe('.isUpdatable', () => {
       expect(response).toEqual(false);
     });
   });
+
+  describe('when an argument isnt passed in', () => {
+    it('should throw argument error', () => {
+      expect(() => {
+        topicValidator.isUpdatable();
+      }).toThrow();
+    });
+  });
 });
 
 describe('.isRemovable', () => {
@@ -287,6 +339,14 @@ describe('.isRemovable', () => {
       const response = topicValidator.isRemovable(record, topicMessages, 'id');
 
       expect(response).toEqual(false);
+    });
+  });
+
+  describe('when an argument isnt passed in', () => {
+    it('should throw argument error', () => {
+      expect(() => {
+        topicValidator.isRemovable();
+      }).toThrow();
     });
   });
 });
