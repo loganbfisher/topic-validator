@@ -124,6 +124,8 @@ const update = (state, record, primaryKeyIdentifier) => {
         ...record
       };
     }
+
+    return item;
   });
 };
 

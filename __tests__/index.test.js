@@ -29,13 +29,76 @@ describe('.buildTopicState', () => {
     it('should just return the state array', () => {
       const topicMessages = [
         {
-          deviceId: 'testDeviceId',
-          externalHardwareId: 'testExternalHardwareId',
-          type: 'testType',
-          vendorId: 'testVendorId',
-          topicAction: 'farts',
-          created: 1511215962473,
-          updated: 1511215962473
+          deviceId: '85dfee23-0e16-43a4-ae31-4b2f464b6151',
+          externalHardwareId: 'shart',
+          type: 'shart',
+          vendorId: 'shart',
+          topicAction: 'created',
+          created: 1513616355890,
+          updated: null
+        },
+        {
+          deviceId: '85dfee23-0e16-43a4-ae31-4b2f464b6151',
+          externalHardwareId: 'fart',
+          type: 'shart',
+          vendorId: 'shart',
+          topicAction: 'updated',
+          created: null,
+          updated: 1513616370869
+        },
+        {
+          deviceId: '85dfee23-0e16-43a4-ae31-4b2f464b6151',
+          externalHardwareId: 'happy',
+          type: 'shart',
+          vendorId: 'shart',
+          topicAction: 'updated',
+          created: null,
+          updated: 1513617476108
+        },
+        {
+          deviceId: '85dfee23-0e16-43a4-ae31-4b2f464b6151',
+          externalHardwareId: 'fourth',
+          type: 'shart',
+          vendorId: 'shart',
+          topicAction: 'updated',
+          created: null,
+          updated: 1513617480690
+        },
+        {
+          deviceId: '3b368431-5743-4311-a7a2-e84bd9c0012f',
+          externalHardwareId: 'happy',
+          type: 'tater',
+          vendorId: 'shart',
+          topicAction: 'created',
+          created: 1513617566665,
+          updated: null
+        },
+        {
+          deviceId: 'dcf393c3-1520-478e-a491-7ea77bff06c8',
+          externalHardwareId: 'happy',
+          type: 'tater',
+          vendorId: 'shart',
+          topicAction: 'created',
+          created: 1513619080946,
+          updated: null
+        },
+        {
+          deviceId: 'dcf393c3-1520-478e-a491-7ea77bff06c8',
+          externalHardwareId: 'tater',
+          type: 'shart',
+          vendorId: 'shart',
+          topicAction: 'updated',
+          created: null,
+          updated: 1513619341438
+        },
+        {
+          deviceId: 'dcf393c3-1520-478e-a491-7ea77bff06c8',
+          externalHardwareId: 'tater',
+          type: 'shart',
+          vendorId: 'shart',
+          topicAction: 'deleted',
+          created: null,
+          updated: 1513619341438
         }
       ];
 
@@ -45,7 +108,26 @@ describe('.buildTopicState', () => {
         'topicAction'
       );
 
-      expect(response).toEqual([]);
+      expect(response).toEqual([
+        {
+          deviceId: '85dfee23-0e16-43a4-ae31-4b2f464b6151',
+          externalHardwareId: 'fourth',
+          type: 'shart',
+          vendorId: 'shart',
+          topicAction: 'updated',
+          created: null,
+          updated: 1513617480690
+        },
+        {
+          deviceId: '3b368431-5743-4311-a7a2-e84bd9c0012f',
+          externalHardwareId: 'happy',
+          type: 'tater',
+          vendorId: 'shart',
+          topicAction: 'created',
+          created: 1513617566665,
+          updated: null
+        }
+      ]);
     });
   });
 
