@@ -5,7 +5,7 @@ import byContract from 'bycontract';
  * @function
  * @param {array} topicMessages - Array of the current topic messages.
  * @param {string} primaryKey - The primary key used to identify each message.
- * @param {string} topicActionKey - The key for your command action in the topic message (example: topicAction: 'created').
+ * @param {string} topicActionKey - The key for your command action in the topic message. IMPORTANT your actions must use the keywords: created, updated, or deleted. (example: topicAction: 'created')
  * @example
  * const topicMessages = [
  *   {
@@ -189,10 +189,10 @@ const remove = (state, record, primaryKeyIdentifier) => {
  * isCreatable(record, topicMessages, 'id');
  * @returns {boolean} Returns a boolean value.
  */
-const isCreatable = (record, topicMessages, primaryKeyIdentifier) => {
+const isCreatable = (record, state, primaryKeyIdentifier) => {
   try {
     byContract(
-      [record, topicMessages, primaryKeyIdentifier],
+      [record, state, primaryKeyIdentifier],
       ['object', 'array', 'string']
     );
   } catch (err) {
@@ -201,7 +201,7 @@ const isCreatable = (record, topicMessages, primaryKeyIdentifier) => {
 
   let bool = null;
 
-  topicMessages.forEach(message => {
+  state.forEach(message => {
     if (record[primaryKeyIdentifier] === message[primaryKeyIdentifier]) {
       bool = false;
     } else {
@@ -235,10 +235,10 @@ const isCreatable = (record, topicMessages, primaryKeyIdentifier) => {
  * isUpdatable(record, topicMessages, 'id');
  * @returns {boolean} Returns a boolean value.
  */
-const isUpdatable = (record, topicMessages, primaryKeyIdentifier) => {
+const isUpdatable = (record, state, primaryKeyIdentifier) => {
   try {
     byContract(
-      [record, topicMessages, primaryKeyIdentifier],
+      [record, state, primaryKeyIdentifier],
       ['object', 'array', 'string']
     );
   } catch (err) {
@@ -247,7 +247,7 @@ const isUpdatable = (record, topicMessages, primaryKeyIdentifier) => {
 
   let bool = null;
 
-  topicMessages.forEach(message => {
+  state.forEach(message => {
     if (record[primaryKeyIdentifier] === message[primaryKeyIdentifier]) {
       bool = true;
     } else {
@@ -281,10 +281,10 @@ const isUpdatable = (record, topicMessages, primaryKeyIdentifier) => {
  * isRemovable(record, topicMessages, 'id');
  * @returns {boolean} Returns a boolean value.
  */
-const isRemovable = (record, topicMessages, primaryKeyIdentifier) => {
+const isRemovable = (record, state, primaryKeyIdentifier) => {
   try {
     byContract(
-      [record, topicMessages, primaryKeyIdentifier],
+      [record, state, primaryKeyIdentifier],
       ['object', 'array', 'string']
     );
   } catch (err) {
@@ -293,7 +293,7 @@ const isRemovable = (record, topicMessages, primaryKeyIdentifier) => {
 
   let bool = null;
 
-  topicMessages.forEach(message => {
+  state.forEach(message => {
     if (record[primaryKeyIdentifier] === message[primaryKeyIdentifier]) {
       bool = true;
     } else {
