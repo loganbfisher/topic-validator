@@ -29,6 +29,5 @@ steps:
       branch:
         only: [ master ]
     commands:
-      - npm run update-docs
       - npm run build
       - npm run semantic-release

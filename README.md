@@ -16,13 +16,13 @@ I would love to hear input from others around the current problem this package i
 
 ### Table of Contents
 
-* [buildTopicState](#buildtopicstate)
-* [create](#create)
-* [update](#update)
-* [remove](#remove)
-* [isCreatable](#iscreatable)
-* [isUpdatable](#isupdatable)
-* [isRemovable](#isremovable)
+-   [buildTopicState](#buildtopicstate)
+-   [create](#create)
+-   [update](#update)
+-   [remove](#remove)
+-   [isCreatable](#iscreatable)
+-   [isUpdatable](#isupdatable)
+-   [isRemovable](#isremovable)
 
 ## buildTopicState
 
@@ -30,9 +30,9 @@ Builds the most current state of a topic from looping over messages and replayin
 
 **Parameters**
 
-* `topicMessages` **[array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)** Array of the current topic messages.
-* `primaryKey` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** The primary key used to identify each message.
-* `topicActionKey` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** The key for your command action in the topic message (example: topicAction: 'created').
+-   `topicMessages` **[array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)** Array of the current topic messages.
+-   `primaryKey` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** The primary key used to identify each message.
+-   `topicActionKey` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** The key for your command action in the topic message. IMPORTANT your actions must use the keywords: created, updated, or deleted. (example: topicAction: 'created')
 
 **Examples**
 
@@ -49,7 +49,11 @@ const topicMessages = [
   }
 ];
 
-buildTopicState(topicMessages, 'deviceId', 'topicAction');
+buildTopicState(
+  topicMessages,
+  'deviceId',
+'topicAction'
+);
 ```
 
 Returns **[array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)** Returns a new state array of topic messages from replay.
@@ -60,17 +64,15 @@ Adds the new message to the current state.
 
 **Parameters**
 
-* `state` **[array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)** Array of the current topic messages.
-* `record` **[object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** The new message being created.
+-   `state` **[array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)** Array of the current topic messages.
+-   `record` **[object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** The new message being created.
 
 **Examples**
 
 ```javascript
-const topicMessages = [
-  {
-    thing: 'thing'
-  }
-];
+const topicMessages = [{
+  thing: 'thing'
+}]
 
 create(topicMessages, { test: 'test' });
 ```
@@ -83,9 +85,9 @@ Updates found message to the current state.
 
 **Parameters**
 
-* `state` **[array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)** Array of the current topic messages.
-* `record` **[object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** The new message being created.
-* `primaryKeyIdentifier` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** The primary key used to keep records unique.
+-   `state` **[array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)** Array of the current topic messages.
+-   `record` **[object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** The new message being created.
+-   `primaryKeyIdentifier` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** The primary key used to keep records unique.
 
 **Examples**
 
@@ -113,9 +115,9 @@ Removes found message from the current state.
 
 **Parameters**
 
-* `state` **[array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)** Array of the current topic messages.
-* `record` **[object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** The new message being created.
-* `primaryKeyIdentifier` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** The primary key used to keep records unique.
+-   `state` **[array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)** Array of the current topic messages.
+-   `record` **[object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** The new message being created.
+-   `primaryKeyIdentifier` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** The primary key used to keep records unique.
 
 **Examples**
 
@@ -143,9 +145,9 @@ Searches the current state to see if the message has already been created.
 
 **Parameters**
 
-* `record` **[object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** The new message being created.
-* `state` **[array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)** Array of the current topic messages.
-* `primaryKeyIdentifier` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** The primary key used to keep records unique.
+-   `record` **[object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)**  The new message being created.
+-   `state` **[array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)** Array of the current topic messages.
+-   `primaryKeyIdentifier` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** The primary key used to keep records unique.
 
 **Examples**
 
@@ -174,9 +176,9 @@ Searches the current state to see if the message can be updated.
 
 **Parameters**
 
-* `record` **[object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** The new message being created.
-* `state` **[array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)** Array of the current topic messages.
-* `primaryKeyIdentifier` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** The primary key used to keep records unique.
+-   `record` **[object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)**  The new message being created.
+-   `state` **[array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)** Array of the current topic messages.
+-   `primaryKeyIdentifier` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** The primary key used to keep records unique.
 
 **Examples**
 
@@ -205,9 +207,9 @@ Searches the current state to see if the message can be deleted.
 
 **Parameters**
 
-* `record` **[object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** The new message being created.
-* `state` **[array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)** Array of the current topic messages.
-* `primaryKeyIdentifier` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** The primary key used to keep records unique.
+-   `record` **[object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)**  The new message being created.
+-   `state` **[array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)** Array of the current topic messages.
+-   `primaryKeyIdentifier` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** The primary key used to keep records unique.
 
 **Examples**
 

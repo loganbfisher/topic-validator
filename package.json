@@ -10,7 +10,7 @@
     "start": "nodemon --exec jest",
     "start-dev": "babel-node ./src/index.js",
     "update-docs": "documentation readme ./src/index.js --section=API",
-    "commit": "git cz",
+    "commit": "git cz && npm run update-docs",
     "build":
       "babel --copy-files --out-dir dist --ignore *.test.js,__mocks__ src",
     "test": "jest",
