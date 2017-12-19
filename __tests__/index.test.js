@@ -296,6 +296,20 @@ describe('.remove', () => {
 });
 
 describe('.isCreatable', () => {
+  describe('when there is an empty array for state passed in.', () => {
+    it('should return true', () => {
+      const record = {
+        id: 'otherId',
+        test: 'deletedContent'
+      };
+
+      const topicMessages = [];
+      const response = topicValidator.isCreatable(record, topicMessages, 'id');
+
+      expect(response).toEqual(true);
+    });
+  });
+
   describe('when you can create a new message.', () => {
     it('should return true', () => {
       const existingObject = {
@@ -342,6 +356,20 @@ describe('.isCreatable', () => {
 });
 
 describe('.isUpdatable', () => {
+  describe('when there is an empty array for state passed in.', () => {
+    it('should return true', () => {
+      const record = {
+        id: 'otherId',
+        test: 'deletedContent'
+      };
+
+      const topicMessages = [];
+      const response = topicValidator.isUpdatable(record, topicMessages, 'id');
+
+      expect(response).toEqual(false);
+    });
+  });
+
   describe('when a message is able to be updated.', () => {
     it('should return true', () => {
       const existingObject = {
@@ -388,6 +416,20 @@ describe('.isUpdatable', () => {
 });
 
 describe('.isRemovable', () => {
+  describe('when there is an empty array for state passed in.', () => {
+    it('should return true', () => {
+      const record = {
+        id: 'otherId',
+        test: 'deletedContent'
+      };
+
+      const topicMessages = [];
+      const response = topicValidator.isRemovable(record, topicMessages, 'id');
+
+      expect(response).toEqual(false);
+    });
+  });
+
   describe('when a message is able to be removed or deleted.', () => {
     it('should return true', () => {
       const existingObject = {

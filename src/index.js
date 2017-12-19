@@ -199,6 +199,10 @@ const isCreatable = (record, state, primaryKeyIdentifier) => {
     throw new Error(err.message);
   }
 
+  if (state.length === 0) {
+    return true;
+  }
+
   let bool = null;
 
   state.forEach(message => {
@@ -245,6 +249,10 @@ const isUpdatable = (record, state, primaryKeyIdentifier) => {
     throw new Error(err.message);
   }
 
+  if (state.length === 0) {
+    return false;
+  }
+
   let bool = null;
 
   state.forEach(message => {
@@ -289,6 +297,10 @@ const isRemovable = (record, state, primaryKeyIdentifier) => {
     );
   } catch (err) {
     throw new Error(err.message);
+  }
+
+  if (state.length === 0) {
+    return false;
   }
 
   let bool = null;
